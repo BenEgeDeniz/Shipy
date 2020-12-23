@@ -10,7 +10,12 @@ A 3rd party PHP class for Shipy.
 
 ## Installation
 
-[Download](https://github.com/BenEgeDeniz/APIMan/releases) APIMan directly and extract them to your web directory.
+If you are using [Composer](https://getcomposer.org/), you can run the following command:
+
+```
+composer require benegedeniz/shipy
+```
+[Download](https://github.com/BenEgeDeniz/Shipy/releases) Shipy directly and extract them to your web directory.
 
 ## Usage
 
