@@ -1,0 +1,24 @@
+{
+    "name": "benegedeniz/shipy",
+    "type": "library",
+    "description": "A 3rd party PHP class for Shipy.",
+    "keywords": ["php shipy api","shipy"],
+    "homepage": "https://github.com/BenEgeDeniz/Shipy",
+    "license": "CC-BY-NC-ND-4.0",
+    "authors": [
+        {
+            "name": "Ege Deniz",
+            "email": "ege@benegedeniz.com",
+            "homepage": "https://benegedeniz.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Shipy": "src"
+        }
+    }
+}
