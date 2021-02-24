@@ -23,7 +23,7 @@ $paymentInfo = [ // Setting payment info with required details.
  *
  * Creating payment request to Shipy.
  *
- * @param $paymentType Paymnet type. Can be set as {credit_card, mobile}
+ * @param $paymentType Paymnet type. Can be set as {credit_card, mobile, eft}
  * @param $paymentInfo Payment information for Shipy to process.
  *
  * @return void
