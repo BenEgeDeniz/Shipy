@@ -9,6 +9,7 @@ class Shipy
 {
 	private $apiKey;
 	private $ccPayURL;
+	private $eftPayURL;
 	private $mbPayPage;
 	private $isCallbackStarted = false;
 
@@ -19,10 +20,10 @@ class Shipy
 
 	public function createPaymentRequest(string $paymentType, array $paymentInfo)
 	{
-		$validPayments = ["credit_card", "mobile"];
+		$validPayments = ["credit_card", "mobile", "eft"];
 
 		if (!in_array($paymentType, $validPayments))
-			throw new Exception("Error Processing Request: Payment type must be 'mobile' or 'credit_card'.", 1);
+			throw new Exception("Error Processing Request: Payment type must be 'mobile', 'credit_card' or 'eft'.", 1);
 
 		$paymentInfo['apiKey'] = $this->apiKey;
 
@@ -45,6 +46,16 @@ class Shipy
 			$result = json_decode($result, true);
 
 			if ($result['status'] == "success")
+    			$this->eftPayURL = $result['link'];
+    		else
+    			print("Shipy Error: " . $result["message"]);
+    	}
+
+    	if ($paymentType == "eft")
+		{
+			$result = json_decode($result, true);
+
+			if ($result['status'] == "success")
     			$this->ccPayURL = $result['link'];
     		else
     			print("Shipy Error: " . $result["message"]);
@@ -60,6 +71,8 @@ class Shipy
 	{
 		if (!empty($this->ccPayURL))
 			header("Location: " . $this->ccPayURL);
+		else if (!empty($this->eftPayURL))
+			header("Location: " . $this->eftPayURL);
 		else if (!empty($this->mbPayPage))
 			print($this->mbPayPage);
 		else
